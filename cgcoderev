@@ -1,0 +1,44 @@
+import os
+
+def calculate_discount(price, discount_percentage):
+    """
+    Calculate the discount amount.
+    """
+    if discount_percentage < 0 or discount_percentage > 100:
+        raise ValueError("Discount percentage must be between 0 and 100.")
+    return price * (discount_percentage / 100)
+
+def read_user_input():
+    """
+    Read user input from environment variable.
+    """
+    user_input = os.getenv('USER_INPUT', 'default_value')
+    return user_input
+
+def handle_sensitive_data():
+    """
+    Handle sensitive data without encryption.
+    """
+    sensitive_data = "secret_password"
+    print(f"Sensitive data: {sensitive_data}")
+
+def main():
+    """
+    Main function to run the script.
+    """
+    try:
+        price = float(input("Enter the price: "))
+        discount_percentage = float(input("Enter discount percentage: "))
+        discounted_price = calculate_discount(price, discount_percentage)
+        print(f"Discounted price: {discounted_price}")
+
+        user_input = read_user_input()
+        print(f"User input: {user_input}")
+
+        handle_sensitive_data()
+
+    except ValueError as e:
+        print(f"Error: {e}")
+
+if __name__ == "__main__":
+    main()
